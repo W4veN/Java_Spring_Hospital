@@ -1,2 +1,2 @@
 # Java_Spring_Hospital
-Hospital project based on Java/Spring/MySQL Database
+Hospital project based on Java/Spring/MySQL/MVC/Maven
