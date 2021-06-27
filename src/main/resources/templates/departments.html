@@ -1,0 +1,44 @@
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Hospital of New Amsterdam</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="/main.css" />
+</head>
+
+<body>
+
+<h2>Lista oddziałów</h2>
+
+<div class="display-list" style="width:300px">
+    <table>
+        <tr>
+            <th>Id</th>
+            <th>Nazwa</th>
+            <th>Lokalizacja</th>
+        </tr>
+
+        <th:block th:each = "dep : ${departments}">
+            <tr>
+                <td th:text="${dep.id}">ID</td>
+                <td>
+                    <a th:href="@{/departments/} + ${dep.id}" th:text="${dep.name}">FULL_NAME</a>
+                </td>
+                <td>
+                    <a th:href="@{/departments/} + ${dep.id}" th:text="${dep.location}">LOCATION</a>
+                </td>
+            </tr>
+        </th:block>
+
+    </table>
+</div>
+
+<div>
+    <p>Utwórz</p>
+    <p><a th:href="@{/}">Strona domowa</a></p>
+</div>
+
+</body>
+
+</html>

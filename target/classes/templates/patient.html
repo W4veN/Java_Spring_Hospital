@@ -1,0 +1,51 @@
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Hospital of New Amsterdam</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="/main.css" />
+</head>
+
+<body>
+
+<h2>Pacjent</h2>
+
+<div class="display-one" th:object="${patient}">
+    <table>
+        <tr>
+            <td>Id</td> <td th:text="*{id}">ID</td>
+        </tr>
+        <tr>
+            <td>Imię</td> <td th:text="*{firstName}">FIRST_NAME</td>
+        </tr>
+        <tr>
+            <td>Nazwisko</td> <td th:text="*{lastName}">LAST_NAME</td>
+        </tr>
+        <tr>
+            <td>Data przyjęcia</td> <td th:text="*{admDate}">ADM_DATE</td>
+        </tr>
+        <tr>
+            <td>Oddział</td> <td th:text="*{department.name}">DEPARTMENT</td>
+        </tr>
+        <tr>
+            <td>Diagnoza</td> <td th:text="*{diagnosis.name}">DIAGNOSIS</td>
+        </tr>
+        <tr>
+            <td>Leczenie</td> <td th:text="*{diagnosis.treatment.name}">TREATMENT</td>
+        </tr>
+        <tr>
+            <td>Doktor</td> <td th:text="*{doctor.firstName + ' ' + doctor.lastName}">DOCTOR</td>
+        </tr>
+    </table>
+</div>
+
+<div>
+    <p><a th:href="@{/patients/form/} + ${patient.id}">Modyfikuj</a></p>
+    <p><a th:href="@{/patients/delete/} + ${patient.id}">Usuń</a></p>
+    <p><a th:href="@{/patients}">Powrót</a></p>
+</div>
+
+</body>
+
+</html>

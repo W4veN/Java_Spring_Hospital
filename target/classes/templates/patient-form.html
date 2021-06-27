@@ -1,0 +1,76 @@
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Hospital of New Amsterdam</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" th:href="@{/main.css}" />
+</head>
+
+<body>
+
+<h2>Pacjent</h2>
+
+<div class="display-form" th:object="${patient}">
+    <form th:action="@{/patients/save}" method="post">
+        <table>
+            <tr>
+                <td>Id</td>
+                <td th:text="*{id}">ID</td>
+                <td>
+                    <input type="hidden" th:field="*{id}" />
+                </td>
+            </tr>
+            <tr>
+                <td>Imię</td>
+                <td>
+                    <input type="text" th:field="*{firstName}" />
+                </td>
+            </tr>
+            <tr>
+                <td>Nazwisko</td>
+                <td>
+                    <input type="text" th:field="*{lastName}" />
+                </td>
+            </tr>
+            <tr>
+                <td>Data przyjęcia</td>
+                <td>
+                    <input type="date" th:field="*{admDate}" />
+                </td>
+            </tr>
+            <tr>
+                <td>Oddział</td>
+                <td>
+                    <select th:field = "*{department.id}">
+                        <option th:each  = "dep : ${departments}"
+                                th:value = "${dep.id}"
+                                th:text  = "${dep.name}" />
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Doktor</td>
+                <td>
+                    <select th:field = "*{doctor.id}">
+                        <option th:each  = "doc : ${doctors}"
+                                th:value = "${doc.id}"
+                                th:text  = "${doc.firstName + ' ' + doc.lastName}" />
+                    </select>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <input type="submit" value="Utwórz" />
+                </td>
+                <td><a th:href="@{/patients}">Anuluj</a></td>
+            </tr>
+
+        </table>
+    </form>
+</div>
+
+</body>
+
+</html>
